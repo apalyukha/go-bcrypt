@@ -6,11 +6,17 @@ import (
 )
 
 func main() {
-	for i := 0; i < 10; i++ {
-		pass := []byte("pa$$W0rd!")
-		cost := 10
-		hash, _ := bcrypt.GenerateFromPassword(pass, cost)
 
-		fmt.Printf("%s: %s\n", pass, hash)
-	}
+	password := []byte("pa$$W0rd!")
+
+	//for i := 0; i < 10; i++ {
+	//	steps := 10
+	//	hashed, _ := bcrypt.GenerateFromPassword(password, steps)
+	//	fmt.Printf("%s: %s\n", password, hashed)
+	//}
+
+	hashedPassword := []byte("$2a$10$k.axZGHq8ae/ZhvGUVebyuaXsF9iVlSzoKGayoXb8flol/J1SZ0/K")
+	err := bcrypt.CompareHashAndPassword(hashedPassword, password)
+	fmt.Println(err)
+
 }
